@@ -15,12 +15,19 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    post("/word", (request, response) ->{
+    get("/vocabWords", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      model.put("vocabWords", VocabWord.all());
+      model.put("template", "templates/home.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/vocabWord", (request, response) ->{
       HashMap<String, Object> model = new HashMap<String, Object>();
       String term = request.queryParams("term");
       VocabWord vocabWord = new VocabWord(term);
-      model.put("vocabWord", VocabWord.all());
-      model.put("template", "templates/contacts.vtl");
+      model.put("vocabWords", VocabWord.all());
+      model.put("template", "templates/words.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
   }
