@@ -4,13 +4,11 @@ public class VocabWord {
   private static ArrayList<VocabWord> instances = new ArrayList<VocabWord>();
 
   private String mVocabWord;
-  private String mPartOfSpeech;
   private int mId;
   private ArrayList<Definition> mDefinitions;
 
-  public VocabWord(String vocabWord, String partOfSpeech){
+  public VocabWord(String vocabWord){
     mVocabWord = vocabWord;
-    mPartOfSpeech = partOfSpeech;
     instances.add(this);
     mId = instances.size();
     mDefinitions = new ArrayList<Definition>();
@@ -18,10 +16,6 @@ public class VocabWord {
 
   public String getVocabWord() {
     return mVocabWord;
-  }
-
-  public String getPartOfSpeech() {
-    return mPartOfSpeech;
   }
 
   public int getId() {

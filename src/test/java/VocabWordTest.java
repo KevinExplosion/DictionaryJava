@@ -7,33 +7,27 @@ public class VocabWordTest {
 
   @Test
   public void vocabWord_instantiatesCorrectly_true() {
-    VocabWord myVocabWord = new VocabWord("school", "noun");
+    VocabWord myVocabWord = new VocabWord("school");
     assertEquals(true, myVocabWord instanceof VocabWord);
   }
 
   @Test
   public void vocabWord_instantiatesWithVocabularyWord_true() {
-    VocabWord myVocabWord = new VocabWord("school", "noun");
+    VocabWord myVocabWord = new VocabWord("school");
     assertEquals("school", myVocabWord.getVocabWord());
   }
 
   @Test
-  public void vocabWord_instantiatesWithPartOfSpeech_true() {
-    VocabWord myVocabWord = new VocabWord("school", "noun");
-    assertEquals("noun", myVocabWord.getPartOfSpeech());
-  }
-
-  @Test
   public void all_returnsAllInstancesOfVocabWord_true() {
-    VocabWord firstVocabWord = new VocabWord("school", "noun");
-    VocabWord secondVocabWord = new VocabWord("learn", "verb");
+    VocabWord firstVocabWord = new VocabWord("school");
+    VocabWord secondVocabWord = new VocabWord("learn");
     assertTrue(VocabWord.all().contains(firstVocabWord));
     assertTrue(VocabWord.all().contains(secondVocabWord));
   }
 
   @Test
   public void newId_vocabWordInstantiatesWithAnId_true() {
-    VocabWord myVocabWord = new VocabWord("school", "noun");
+    VocabWord myVocabWord = new VocabWord("school");
     assertEquals(VocabWord.all().size(), myVocabWord.getId());
   }
 
