@@ -1,12 +1,13 @@
-# Word Puzzle
+# Dictionary
 
-#### Short Description
+#### Enter a word and a description
 
-#### By Name
+#### By Kevin Mattison
 
-## Description
+## You can enter a word, and update the definition. Comb back through the terms you've created to check out what they mean.
 
 ## Installation Instructions
+* Clone it, pull it, branch it, push it!?
 
 ## Known Bugs
 
@@ -17,7 +18,7 @@
 * HTML
 * Gradle
 * Spark
-* junit
+* Junit
 * Velocity
 * Fluentlenium
 
@@ -25,4 +26,4 @@
 
 Licensed under the GPL.
 
-Copyright (c) 2016 **Name**
+Copyright (c) 2016 **Kevin Mattison**

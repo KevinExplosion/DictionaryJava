@@ -1,9 +1,9 @@
 apply plugin: 'java'
 apply plugin: 'application'
 
-archivesBaseName = "insert-folder-name-here"
+archivesBaseName = "Dictionary"
 version = '1.0'
-mainClassName = "insert-MainClass-here"
+mainClassName = "Dictionary"
 
 repositories {
   mavenCentral()
