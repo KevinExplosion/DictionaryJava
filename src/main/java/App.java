@@ -9,13 +9,8 @@ public class App {
     staticFileLocation("/public");
     String layout = "templates/layout.vtl";
 
+//home page
     get("/", (request, resopnse) -> {
-      HashMap<String, Object> model = new HashMap<String, Object>();
-      model.put("template", "templates/home.vtl");
-      return new ModelAndView(model, layout);
-    }, new VelocityTemplateEngine());
-
-    get("/vocabWords", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
       model.put("vocabWords", VocabWord.all());
       model.put("template", "templates/home.vtl");
