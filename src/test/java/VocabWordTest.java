@@ -36,4 +36,9 @@ public class VocabWordTest {
     VocabWord myVocabWord = new VocabWord("school", "noun");
     assertEquals(VocabWord.all().size(), myVocabWord.getId());
   }
+
+  @Test
+  public void find_returnsNullWhenNoVocabWordFound_null() {
+    assertTrue(VocabWord.find(999) == null);
+  }
 }

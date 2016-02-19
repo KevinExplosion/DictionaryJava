@@ -1,6 +1,6 @@
 # Dictionary
 
-#### Enter a word and a description
+#### Test
 
 #### By Kevin Mattison
 
