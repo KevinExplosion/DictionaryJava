@@ -19,7 +19,7 @@ public class App {
 
     post("/vocabWord", (request, response) ->{
       HashMap<String, Object> model = new HashMap<String, Object>();
-      String term = request.queryParams("term");
+      String term = request.queryParams("vocabWord");
       VocabWord vocabWord = new VocabWord(term);
       model.put("vocabWords", VocabWord.all());
       model.put("template", "templates/words.vtl");
