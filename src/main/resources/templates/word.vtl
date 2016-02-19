@@ -1,0 +1,11 @@
+word.vtl
+
+<h1>Words you have added:</h1>
+
+#foreach($vocabword in $vocabwords)
+  <h3><a href="word/$vocabword.getId()">$vocabword.getVocabWord()</a></h3>
+#end
+
+<h3>Click on a word to add a definition</h3>
+
+<a href="/">Return to Main Page</a>

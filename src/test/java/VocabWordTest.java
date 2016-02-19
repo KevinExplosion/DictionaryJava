@@ -12,9 +12,9 @@ public class VocabWordTest {
   }
 
   @Test
-  public void vocabWord_instantiatesWithVocabularyWord_true() {
+  public void vocabWord_instantiatesWithTerm_true() {
     VocabWord myVocabWord = new VocabWord("school");
-    assertEquals("school", myVocabWord.getVocabWord());
+    assertEquals("school", myVocabWord.getTerm());
   }
 
   @Test
