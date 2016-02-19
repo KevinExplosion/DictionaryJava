@@ -1,6 +1,6 @@
 # Dictionary
 
-#### Test
+#### A dictionary built in Java!
 
 #### By Kevin Mattison
 
