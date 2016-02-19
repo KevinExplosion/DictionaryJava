@@ -6,13 +6,14 @@ public class VocabWord {
   private String mVocabWord;
   private String mPartOfSpeech;
   private int mId;
-  // private ArrayList<Definitions> mDefinitions;
+  private ArrayList<Definition> mDefinitions;
 
   public VocabWord(String vocabWord, String partOfSpeech){
     mVocabWord = vocabWord;
     mPartOfSpeech = partOfSpeech;
     instances.add(this);
     mId = instances.size();
+    mDefinitions = new ArrayList<Definition>();
   }
 
   public String getVocabWord() {
@@ -38,5 +39,13 @@ public class VocabWord {
     catch (IndexOutOfBoundsException exception) {
       return null;
     }
+  }
+
+  public ArrayList<Definition> getDefinitions() {
+    return mDefinitions;
+  }
+
+  public void addDefinition(Definition definition) {
+    mDefinitions.add(definition);
   }
 }
