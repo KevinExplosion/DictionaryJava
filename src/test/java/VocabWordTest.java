@@ -30,4 +30,10 @@ public class VocabWordTest {
     assertTrue(VocabWord.all().contains(firstVocabWord));
     assertTrue(VocabWord.all().contains(secondVocabWord));
   }
+
+  @Test
+  public void newId_vocabWordInstantiatesWithAnId_true() {
+    VocabWord myVocabWord = new VocabWord("school", "noun");
+    assertEquals(VocabWord.all().size(), myVocabWord.getId());
+  }
 }
