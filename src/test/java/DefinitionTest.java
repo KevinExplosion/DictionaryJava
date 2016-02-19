@@ -25,8 +25,26 @@ public class DefinitionTest {
   @Test
   public void all_returnsAllInstancesOfDefinition_true() {
     Definition firstDefinition = new Definition("noun", "a place of learning");
-    Definition secondDefinition = new Definition("verb", "gaining new knowledge");
+    Definition secondDefinition = new Definition("verb", "to teach someone");
     assertTrue(Definition.all().contains(firstDefinition));
     assertTrue(Definition.all().contains(secondDefinition));
+  }
+
+  @Test
+  public void newId_definitionInstantiatesWithId_true() {
+    Definition myDefinition = new Definition("noun", "a place of learning");
+    assertEquals(Definition.all().size(), myDefinition.getId());
+  }
+
+  @Test
+  public void find_returnsDefinitionWithSameId_secondDefinition() {
+    Definition firstDefinition = new Definition("noun", "a place of learning");
+    Definition secondDefinition = new Definition("verb", "to teach someone");
+    assertEquals(Definition.find(secondDefinition.getId()), secondDefinition);
+  }
+
+  @Test
+  public void find_returnsNullWhenNoDefinitionFound_null() {
+    assertTrue(Definition.find(999)==null);
   }
 }
