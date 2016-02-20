@@ -3,19 +3,19 @@ import java.util.ArrayList;
 public class VocabWord {
   private static ArrayList<VocabWord> instances = new ArrayList<VocabWord>();
 
-  private String mTerm;
+  private String mName;
   private int mId;
   private ArrayList<Definition> mDefinitions;
 
-  public VocabWord(String term){
-    mTerm = term;
+  public VocabWord(String name){
+    mName = name;
     instances.add(this);
     mId = instances.size();
     mDefinitions = new ArrayList<Definition>();
   }
 
-  public String getTerm() {
-    return mTerm;
+  public String getName() {
+    return mName;
   }
 
   public int getId() {
@@ -26,6 +26,10 @@ public class VocabWord {
     return instances;
   }
 
+  public ArrayList<Definition> getDefinitions() {
+    return mDefinitions;
+  }
+
   public static VocabWord find(int id) {
     try {
       return instances.get(id -1);
@@ -33,10 +37,6 @@ public class VocabWord {
     catch (IndexOutOfBoundsException exception) {
       return null;
     }
-  }
-
-  public ArrayList<Definition> getDefinitions() {
-    return mDefinitions;
   }
 
   public void addDefinition(Definition definition) {

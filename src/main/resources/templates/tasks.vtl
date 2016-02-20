@@ -1,9 +1,0 @@
-tasks.vtl
-
-<h1> All tasks </h1>
-<ul>
-#foreach ($vocabWord in $vocabWords)
-  <a href="/vocabWords/$vocabWord.getId()">$vocabWord.getTerm()</a>
-#end
-</ul>
-<a href="/vocabWords/new">Add new vocabWord</a>

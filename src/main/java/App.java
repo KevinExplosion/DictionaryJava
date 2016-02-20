@@ -9,96 +9,50 @@ public class App {
     staticFileLocation("/public");
     String layout = "templates/layout.vtl";
 
-    get("/", (request, response) -> {
+    get("/", (request, response) ->{
       HashMap<String, Object> model = new HashMap<String, Object>();
+      model.put("vocabWords", VocabWord.all());
       model.put("template", "templates/home.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
     //
-    get("/tasks", (request, response) -> {
-      HashMap<String, Object> model = new HashMap<String, Object>();
-      model.put("definitions", Definition.all());
-      model.put("template", "templates/tasks.vtl");
-      return new ModelAndView(model, layout);
-    }, new VelocityTemplateEngine());
-    //
-    get("definitions/new", (request, response) -> {
-      HashMap<String, Object> model = new HashMap<String, Object>();
-      model.put("template", "templates/task-form.vtl");
-      return new ModelAndView(model, layout);
-    }, new VelocityTemplateEngine());
-    //
-    get("/vocabWords", (request, response) -> {
-      HashMap<String, Object> model = new HashMap<String, Object>();
-      model.put("vocabWords", VocabWord.all());
-      model.put("template", "templates/vocabWords.vtl");
-      return new ModelAndView(model, layout);
-    }, new VelocityTemplateEngine());
-    //
-    get("vocabWords/new", (request, response) -> {
-      HashMap<String, Object> model = new HashMap<String, Object>();
-      model.put("template", "templates/word-form.vtl");
-      return new ModelAndView(model, layout);
-    }, new VelocityTemplateEngine());
-    //
-    // get ("/categories/:id", (request, response) -> {
-    //   HashMap<String, Object> model = new HashMap< String, Object>();
-    //
-    //   Category category = Category.find(Integer.parseInt(request.params(":id")));
-    //   model.put("category", category);
-    //
-    //   model.put("template", "templates/category.vtl");
-    //   return new ModelAndView(model, layout);
-    // }, new VelocityTemplateEngine());
-    //
-    // get("categories/:id/tasks/new", (request, response) -> {
+    // get("vocabWords/new", (request, response) -> {
     //   HashMap<String, Object> model = new HashMap<String, Object>();
-    //   Category category = Category.find(Integer.parseInt(request.params(":id")));
-    //   ArrayList<Task> tasks = category.getTasks();
-    //   model.put("category", category);
-    //   model.put("tasks", tasks);
-    //   model.put("template", "templates/category-tasks-form.vtl");
+    //   model.put("template", "templates/vocabWord-form.vtl");
     //   return new ModelAndView(model, layout);
     // }, new VelocityTemplateEngine());
     //
-    // post("/tasks", (request,response) -> {
+    // get("/vocabWords/:id", (request, response) -> {
     //   HashMap<String, Object> model = new HashMap<String, Object>();
-    //
-    //   Category category = Category.find(Integer.parseInt(request.queryParams("categoryId")));
-    //   ArrayList<Task> tasks = category.getTasks();
-    //
-    //   // if (tasks == null) {
-    //   //   tasks = new ArrayList<Task>();
-    //   //   request.session().attribute("tasks", tasks);
-    //   // }
-    //
-    //   String description = request.queryParams("description");
-    //   Task newTask = new Task(description);
-    //
-    //   tasks.add(newTask);
-    //
-    //   model.put("tasks", tasks);
-    //   model.put("category", category);
-    //   model.put("template", "templates/category.vtl");/* i changed this from category.vtl to success.vtl just to see something...*/
+    //   VocabWord vocabWord = VocabWord.find(Integer.parseInt(request.params(":id")));
+    //   ArrayList<Definition> definitions = vocabWord.getDefinitions();
+    //   model.put("vocabWord", vocabWord);
+    //   model.put("definitions", definitions);
+    //   model.put("template", "templates/vocabWord.vtl");
     //   return new ModelAndView(model, layout);
     // }, new VelocityTemplateEngine());
     //
-    // post("/categories", (request,response) -> {
+    //
+    // post("/", (request, response) -> {
     //   HashMap<String, Object> model = new HashMap<String, Object>();
     //   String name = request.queryParams("name");
-    //   Category category = new Category(name);
-    //   model.put("category", category);
-    //   model.put("template", "templates/success.vtl");
+    //   Word word = new Word(name);
+    //   model.put("words", Word.all());
+    //   model.put("word", word);
+    //   model.put("template", "templates/home.vtl");
     //   return new ModelAndView(model, layout);
     // }, new VelocityTemplateEngine());
     //
-    //
-    // get("/tasks/:id", (request, response) -> {
+    // post("/words/:id", (request, response) -> {
     //   HashMap<String, Object> model = new HashMap<String, Object>();
-    //
-    //   Task task = Task.find(Integer.parseInt(request.params(":id")));
-    //   model.put("task", task);
-    //   model.put("template", "templates/task.vtl");
+    //   Word word = Word.find(Integer.parseInt(request.queryParams("wordId")));
+    //   ArrayList<Definition> definitions = word.getDefinitions();
+    //   String description = request.queryParams("description");
+    //   Definition newDefinition = new Definition(description);
+    //   definitions.add(newDefinition);
+    //   model.put("definitions", definitions);
+    //   model.put("word", word);
+    //   model.put("template", "templates/word.vtl");
     //   return new ModelAndView(model, layout);
     // }, new VelocityTemplateEngine());
   }

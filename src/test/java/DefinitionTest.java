@@ -11,9 +11,9 @@ public class DefinitionTest {
   }
 
   @Test
-  public void definition_instantiatesWithDefinition() {
+  public void definition_instantiatesWithDescription() {
     Definition myDefinition = new Definition("noun", "a place of learning");
-    assertEquals("a place of learning", myDefinition.getDefinition());
+    assertEquals("a place of learning", myDefinition.getDescription());
   }
 
   @Test
