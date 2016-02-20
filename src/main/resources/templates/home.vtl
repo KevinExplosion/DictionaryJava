@@ -1,5 +1,12 @@
-home.vtl should be done
-<h3>Dictionary</h3>
+home.vtl
 
-<a href="/vocabWords">View Dictionary terms</a>
-<a href="vocabWords/new">Add a new word</a>
+<h1>Create-a-dictionary</h1>
+
+<p>Add a new Word:</p>
+
+<form action="/vocabWords" method="post">
+  <label for="vocabWord">Word</label>
+  <input id="vocabWord" name="vocabWord" type="text" placeholder="Enter a new word">
+
+  <button type="submit" class="btn btn-default">Add Word</button>
+</form>
