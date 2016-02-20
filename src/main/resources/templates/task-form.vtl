@@ -1,0 +1,22 @@
+task-form.vtl
+<p>Add a new definition:</p>
+
+<form action="/definitions" method="post">
+
+<label for="partOfSpeech">Part of Speech</label>
+  <select id="partOfSpeech" name="partOfSpeech">
+    <option value="noun">Noun</option>
+    <option value="pronoun">Pronoun</option>
+    <option value="verb">Verb</option>
+    <option value="adjective">Adjective</option>
+    <option value="adverb">Adverb</option>
+    <option value="preposition">Preposition</option>
+    <option value="conjunction">Conjunction</option>
+    <option value="interjection">Interjection</option>
+  </select>
+
+  <label for="definition">Word Definition</label>
+  <input id="definition" name="definition" type="text">
+
+  <button type="submit" class="btn btn-default">Add definition</button>
+</form>
