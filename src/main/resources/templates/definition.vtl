@@ -1,0 +1,27 @@
+#if ($definitions.size() != 0)
+<h2>Definitions for $word.getName():</h2>
+
+<ul>
+#foreach($definition in $definitions)
+  <li><h3>$definition.getDescription()</h3></li>
+#end
+</ul>
+#else
+<h2>There are no definitions for $word.getName() yet. </h2>
+
+#end
+<hr>
+<br>
+
+<h4>Add a definition for this word:</h4>
+<form action="/words/:id" method="post">
+  <input id="wordId" name="wordId" type= "hidden" value="$word.getId()">
+  <div class="form-group">
+    <input type="text" name="description" id="description" class="form-control" placeholder="Type your definition here" required autofocus="autofocus">
+  </div>
+  <button type="submit" class="btn btn-primary" id="addDefinition">Add Definition</button>
+</form>
+<br>
+
+
+<a href="/" type="button" class="btn btn-success" id="homeButton">Return to Main Page</a>
