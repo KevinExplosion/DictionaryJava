@@ -6,40 +6,34 @@ import static org.junit.Assert.*;
 public class DefinitionTest {
   @Test
   public void definition_instantiatesCorrectly_true() {
-    Definition myDefinition = new Definition("noun", "a place of learning");
+    Definition myDefinition = new Definition("a place of learning");
     assertEquals(true, myDefinition instanceof Definition);
   }
 
   @Test
   public void definition_instantiatesWithDescription() {
-    Definition myDefinition = new Definition("noun", "a place of learning");
+    Definition myDefinition = new Definition("a place of learning");
     assertEquals("a place of learning", myDefinition.getDescription());
   }
 
   @Test
-  public void definition_instantiatesWithPartOfSpeech() {
-    Definition myDefinition = new Definition("noun", "a place of learning");
-    assertEquals("noun", myDefinition.getPartOfSpeech());
-  }
-
-  @Test
   public void all_returnsAllInstancesOfDefinition_true() {
-    Definition firstDefinition = new Definition("noun", "a place of learning");
-    Definition secondDefinition = new Definition("verb", "to teach someone");
+    Definition firstDefinition = new Definition("a place of learning");
+    Definition secondDefinition = new Definition("to teach someone");
     assertTrue(Definition.all().contains(firstDefinition));
     assertTrue(Definition.all().contains(secondDefinition));
   }
 
   @Test
   public void newId_definitionInstantiatesWithId_true() {
-    Definition myDefinition = new Definition("noun", "a place of learning");
+    Definition myDefinition = new Definition("a place of learning");
     assertEquals(Definition.all().size(), myDefinition.getId());
   }
 
   @Test
   public void find_returnsDefinitionWithSameId_secondDefinition() {
-    Definition firstDefinition = new Definition("noun", "a place of learning");
-    Definition secondDefinition = new Definition("verb", "to teach someone");
+    Definition firstDefinition = new Definition("a place of learning");
+    Definition secondDefinition = new Definition("to teach someone");
     assertEquals(Definition.find(secondDefinition.getId()), secondDefinition);
   }
 

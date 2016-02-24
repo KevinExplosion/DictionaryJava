@@ -4,22 +4,16 @@ public class Definition {
   private static ArrayList<Definition> instances = new ArrayList<Definition>();
 
   private String mDescription;
-  private String mPartOfSpeech;
   private int mId;
 
-  public Definition(String partOfSpeech, String description) {
+  public Definition(String description) {
     mDescription = description;
-    mPartOfSpeech = partOfSpeech;
     instances.add(this);
     mId = instances.size();
   }
 
   public String getDescription() {
     return mDescription;
-  }
-
-  public String getPartOfSpeech() {
-    return mPartOfSpeech;
   }
 
   public int getId() {

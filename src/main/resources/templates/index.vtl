@@ -1,0 +1,22 @@
+index.vtl
+
+#if ($vocabWord.size() != 0)
+<h3>Create-a-dictionary</h3>
+
+<form action="/vocabWords" method="post">
+  <div class="form-group">
+    <label for="name">New Vocab Word</label>
+    <input class="form-control" type="text" name="name" id="name">
+  </div>
+  <button type="submit" class="btn btn-default">
+    Add Word
+  </button>
+</form>
+
+<ul>
+  #foreach($vocabWord in $vocabWords)
+    <li><h3><a href="/vocabWords/$vocabWord.getId()">$vocabWord.getName()</a></h3></li>
+  #end
+</ul>
+<h5>Click on a word to view definition/s or add definition/s.</h5>
+#end

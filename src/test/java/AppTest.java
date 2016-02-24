@@ -22,12 +22,12 @@ public class AppTest extends FluentTest {
         goTo("http://localhost:4567/");
         assertThat(pageSource()).contains("Create-a-dictionary");
     }
-//
-//     @Test
-//       public void vocabWordIsCreated() {
-//         goTo("http://localhost:4567/");
-//         fill("#vocabWord").with("school");
-//         submit(".btn");
-//         assertThat(pageSource()).contains("Your task has been saved.");
-//       }
+
+    // @Test
+    //   public void vocabWordIsCreated() {
+    //     goTo("http://localhost:4567/");
+    //     fill("#vocabWord").with("school");
+    //     submit(".btn");
+    //     assertThat(pageSource()).contains("Add Word");
+    //   }
 }
