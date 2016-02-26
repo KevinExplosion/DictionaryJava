@@ -30,6 +30,10 @@ public class VocabWord {
     return mDefinitions;
   }
 
+  public static void clear() {
+    instances.clear();
+  }
+
   public static VocabWord find(int id) {
     try {
       return instances.get(id -1);
