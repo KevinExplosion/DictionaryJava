@@ -67,19 +67,14 @@ public class App {
       VocabWord vocabWord = VocabWord.find(Integer.parseInt(request.queryParams("vocabWordId")));
       ArrayList<Definition> definitions = vocabWord.getDefinitions();
 
-      // if (definitions == null) {
-      //   definitions = new ArrayList<Definition>();
-      //   request.session().attribute("definitions", definitions);
-      // }
-
       String description = request.queryParams("description");
       Definition newDefinition = new Definition(description);
 
-      definitions.add(newDefinition);
+      vocabWord.addDefinition(newDefinition);
 
       model.put("definitions", definitions);
       model.put("vocabWord", vocabWord);
-      model.put("template", "templates/vocabWord.vtl");/* i changed this from vocabWord.vtl to success.vtl just to see something...*/
+      model.put("template", "templates/vocabWord.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 

@@ -1,9 +1,8 @@
-categories.vtl
-
 <h1>Vocab Words</h1>
 
 #foreach($vocabWord in $vocabWords)
   <h3><a href="/vocabWords/$vocabWord.getId()">$vocabWord.getName()</a></h3>
 #end
 
+<a href="vocabWords/new">Add a new vocab word</a>
 <a href="/">Return to Main Page</a>
