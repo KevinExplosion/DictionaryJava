@@ -1,24 +1,9 @@
-vocabWord.vtl
+categories.vtl
 
-<h2>Add a Word</h2>
+<h1>Vocab Words</h1>
 
-#if ($vocabWord.size() != 0)
-<ul>
-  #foreach($vocabWord in $allVocabWords)
-    <li><h3><a href="/vocabWords/$vocabWord.getId()">$vocabWord.getName()</a></h3></li>
-  #end
-</ul>
-<h5>Click on a word to view definition/s or add definition/s.</h5>
+#foreach($vocabWord in $vocabWords)
+  <h3><a href="/vocabWords/$vocabWord.getId()">$vocabWord.getName()</a></h3>
 #end
 
-<form action="/vocabWords" method="post">
-  <div class="form-group">
-    <label for="name">New Vocab Word</label>
-    <input class="form-control" type="text" name="name" id="name">
-  </div>
-  <button type="submit" class="btn btn-default">
-    Add Word
-  </button>
-</form>
-
-Return to <a href="/" type="button" class="btn btn-success" id="homeButton">Main Page</a>
+<a href="/">Return to Main Page</a>

@@ -9,49 +9,96 @@ public class App {
     staticFileLocation("/public");
     String layout = "templates/layout.vtl";
 
-    get("/", (request, response) ->{
+    get("/", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      model.put("template", "templates/home.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    get("/definitions", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      model.put("definitions", Definition.all());
+      model.put("template", "templates/definitions.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    get("definitions/new", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      model.put("template", "templates/definition-form.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    get("/vocabWords", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
       model.put("vocabWords", VocabWord.all());
-      model.put("template", "templates/index.vtl");
+      model.put("template", "templates/vocabWords.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
     get("vocabWords/new", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
-      model.put("template", "templates/wordDefinition.vtl");
+      model.put("template", "templates/vocabWord-form.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    get("/wordDefinition/:id", (request, response) -> {
+    get ("/vocabWords/:id", (request, response) -> {
+      HashMap<String, Object> model = new HashMap< String, Object>();
+
+      VocabWord vocabWord = VocabWord.find(Integer.parseInt(request.params(":id")));
+      model.put("vocabWord", vocabWord);
+
+      model.put("template", "templates/vocabWord.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    get("vocabWords/:id/definition/new", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
-      VocabWord myVocabWord = VocabWord.find(Integer.parseInt(request.params(":id")));
-      ArrayList<Definition> definitions = myVocabWord.getDefinitions();
-      model.put("vocabWord", myVocabWord);
+      VocabWord vocabWord = VocabWord.find(Integer.parseInt(request.params(":id")));
+      ArrayList<Definition> definitions = vocabWord.getDefinitions();
+      model.put("vocabWord", vocabWord);
       model.put("definitions", definitions);
-      model.put("template", "templates/vocabWords.vtl");
+      model.put("template", "templates/vocabWord-definitions-form.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    post("/vocabWords", (request, response) -> {
+    post("/definitions", (request,response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+
+      VocabWord vocabWord = VocabWord.find(Integer.parseInt(request.queryParams("vocabWordId")));
+      ArrayList<Definition> definitions = vocabWord.getDefinitions();
+
+      // if (definitions == null) {
+      //   definitions = new ArrayList<Definition>();
+      //   request.session().attribute("definitions", definitions);
+      // }
+
+      String description = request.queryParams("description");
+      Definition newDefinition = new Definition(description);
+
+      definitions.add(newDefinition);
+
+      model.put("definitions", definitions);
+      model.put("vocabWord", vocabWord);
+      model.put("template", "templates/vocabWord.vtl");/* i changed this from vocabWord.vtl to success.vtl just to see something...*/
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/vocabWords", (request,response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
       String name = request.queryParams("name");
       VocabWord vocabWord = new VocabWord(name);
-      model.put("vocabWords", VocabWord.all());
       model.put("vocabWord", vocabWord);
-      model.put("template", "templates/vocabWords.vtl");
+      model.put("template", "templates/success.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    post("/wordDefinitions/:id", (request, response) -> {
+
+    get("/definitions/:id", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
-      VocabWord vocabWord = VocabWord.find(Integer.parseInt(request.queryParams("vocabWordId")));
-      ArrayList<Definition> definitions = vocabWord.getDefinitions();
-      String description = request.queryParams("description");
-      Definition newDefinition = new Definition(description);
-      definitions.add(newDefinition);
-      model.put("definitions", definitions);
-      model.put("vocabWord", vocabWord);
-      model.put("template", "templates/wordDefinitions.vtl");
+
+      Definition definition = Definition.find(Integer.parseInt(request.params(":id")));
+      model.put("definition", definition);
+      model.put("template", "templates/definition.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
   }

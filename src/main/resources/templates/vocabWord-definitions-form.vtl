@@ -1,0 +1,15 @@
+category-tasks-form.vtl
+<h1>Add a definition to $vocabWord.getName() </h1>
+
+<form action="/definitions" method="post">
+  <input id="vocabWordId" name="vocabWordId" type="hidden" value="$vocabWord.getId()">
+
+  <div calss ="form-group">
+    <label for="description">Add a definition for this vocabWord</label>
+    <input id="description" name="description" type="text" class="form-control">
+  </div>
+
+  <button type="submit" class="btn btn-success">Add Definition</button>
+</form>
+
+<a href="/">Return to Main Page</a>
