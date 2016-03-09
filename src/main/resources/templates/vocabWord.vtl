@@ -1,6 +1,6 @@
 <h3>Here are all the definitions for this vocab word:</h3>
 
-#foreach($definition in $definitions)
+#foreach($definition in $vocabWord.getDefinitions())
   <h3>$definition.getDescription()</h3>
 #end
 

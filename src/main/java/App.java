@@ -46,7 +46,7 @@ public class App {
 
       VocabWord vocabWord = VocabWord.find(Integer.parseInt(request.params(":id")));
       model.put("vocabWord", vocabWord);
-
+      model.put("definitions", Definition.all());
       model.put("template", "templates/vocabWord.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
